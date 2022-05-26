@@ -25,5 +25,11 @@ async def before():
     print("Finished waiting")
 
 called_once_a_day.start()
-bot.run(DISCORD_TOKEN)
+#Put this at the bottom of your .py file
+try:
+    bot.run(DISCORD_TOKEN)
+except discord.errors.LoginFailure as e:
+    print("Login unsuccessful.")
+    print(DISCORD_TOKEN)
+
 
