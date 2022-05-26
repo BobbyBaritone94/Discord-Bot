@@ -16,7 +16,8 @@ WHEN = time(23, 30, 0)  # 6:00 PM
 async def called_once_a_day():  # Fired every day
     await bot.wait_until_ready()  # Make sure your guild cache is ready so the channel can be found via get_channel
     channel = bot.get_channel(int(CHANNEL_ID)) # Note: It's more efficient to do bot.get_guild(guild_id).get_channel(channel_id) as there's less looping involved, but just get_channel still works fine
-    await channel.send("@everyone Please Complete your Daily Stand-up by 8pm. BEEP BOOP Here is the Link: https://drive.google.com/drive/folders/1yWNESub8Ya61OzLj0Wzkrg1MsVWaoqSy BEEP BOOP ")
+    if datetime.utcnow().weekday()<=4:
+        await channel.send("@everyone Please Complete your Daily Stand-up by 8pm. BEEP BOOP Here is the Link: https://drive.google.com/drive/folders/1yWNESub8Ya61OzLj0Wzkrg1MsVWaoqSy BEEP BOOP ")
 
 async def background_task():
     now = datetime.utcnow() #check if you can change this to eastern!!!!!!!!!!!!!SWAG
