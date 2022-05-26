@@ -5,7 +5,7 @@ from discord.ext import commands,tasks
 from dotenv import load_dotenv
 
 load_dotenv()
-TOKEN = os.getenv('DISCORD_TOKEN')
+DISCORD_TOKEN = os.getenv('DISCORD_TOKEN')
 CHANNEL_ID = os.getenv('CHANNEL_ID')
 
 bot = commands.Bot("!")
@@ -25,5 +25,5 @@ async def before():
     print("Finished waiting")
 
 called_once_a_day.start()
-bot.run(TOKEN)
+bot.run(DISCORD_TOKEN)
 
